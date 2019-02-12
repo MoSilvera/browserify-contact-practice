@@ -6,19 +6,20 @@ import contactCollection from "./contactCollection"
 
 
 const contactList = () => {
-    //invokes the .get method on the imported object
+    //invokes the .get method on the imported object, this returns an array of object
     contactCollection.get()
         .then(
             (parsedInfo) => {
-                 //refrence to the contact list element
-                 let contactListEl = document.getElementById("contactList")
+                //refrence to the contact list element where the contacts will be printed
+                let contactListEl = document.getElementById("contactList")
+                //clears the innerHTML of the container -prevents stacking-
                 contactListEl.innerHTML = ""
-                //loops over the array
+                //loops over the array returned by the fetch
                 parsedInfo.forEach((currentObject) => {
 
-                    //pased each object to the contact function (builds the HTML)
+                    //passes each object to the contact function -builds the HTML-
                     let contactHTML = contact(currentObject)
-                    //injected the HTML into the DOM
+                    //injects the created HTML into the DOM
                     contactListEl.innerHTML += contactHTML
                 })
             }

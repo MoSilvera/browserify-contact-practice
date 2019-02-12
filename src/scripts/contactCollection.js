@@ -17,7 +17,7 @@ const contactCollection = {
         return fetch("http://localhost:8088/contacts")
             .then(response => response.json() )
     },
-    //posts to the database - the function accepts an object as the argument
+    //edits content in the database- the function accepts an id as well as a contact object arguments
     Put: function (id, contact) {
         return fetch(`http://localhost:8088/contacts/${id}`, {
             method: "PUT",
